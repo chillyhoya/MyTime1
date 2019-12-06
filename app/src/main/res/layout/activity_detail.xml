@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <RelativeLayout
+        android:id="@+id/rl_header"
+        android:layout_width="match_parent"
+        android:layout_height="280dp">
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+          />
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:fitsSystemWindows="true"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/at_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:layout_below="@id/rl_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_width="fill_parent"
+            android:background="@color/white"
+            android:layout_height="54dp"
+            >
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/time"/>
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="title"
+                android:layout_marginStart="55dp"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:background="@color/white"
+            android:layout_height="54dp"
+            >
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/time"/>
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data"
+                android:layout_marginStart="55dp"/>
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_marginTop="28dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None "
+                android:layout_marginStart="55dp"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="fill_parent"
+            android:background="@color/white"
+            android:layout_height="54dp"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_marginStart="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/noti"/>
+            <TextView
+                android:layout_marginStart="6dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Notification"
+                />
+            <Switch
+                android:layout_marginEnd="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:src="@drawable/time"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="fill_parent"
+            android:background="@color/white"
+            android:layout_height="54dp"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_marginStart="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/calendar"/>
+            <TextView
+                android:layout_marginStart="6dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Show in calendar"
+                />
+            <Switch
+                android:layout_marginEnd="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:src="@drawable/time"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</RelativeLayout>
