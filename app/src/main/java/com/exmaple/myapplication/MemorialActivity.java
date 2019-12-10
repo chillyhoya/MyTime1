@@ -27,12 +27,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MemorialActivity extends AppCompatActivity{
     TextView mEtTitle;
     TextView tvTime;
     TextView mEtContent;
     Memorial note;
+    private TextView tvDay;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +72,7 @@ public class MemorialActivity extends AppCompatActivity{
     private void initView() {
         mEtTitle = findViewById(R.id.tv_title);
         mEtContent = findViewById(R.id.tv_content);
+        tvDay = findViewById(R.id.tv_day);
         tvTime = findViewById(R.id.tv_time);
         ImageView iv_img = findViewById(R.id.iv_img);
 
@@ -88,6 +93,7 @@ public class MemorialActivity extends AppCompatActivity{
         mEtTitle.setText(note.getTitle());
         mEtContent.setText(note.getContent());
         tvTime.setText(note.getTime());
+        tvDay.setText("还剩"+get(note.getTime())+"天");//显示倒计时
     }
 
     @Override
@@ -140,5 +146,19 @@ public class MemorialActivity extends AppCompatActivity{
         MemorialDao.getInstance(this).del(note.getId()+"");
        setResult(RESULT_OK);
        finish();
+    }
+
+    private long get(String time){//实现倒计时功能
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date d1 = df.parse(time);
+            Date d2 = new Date();
+            long diff = d1.getTime() - d2.getTime();//这样得到的差值是微秒级别
+            long days = diff / (1000 * 60 * 60 * 24);
+            return days;
+        }
+        catch (Exception e) {
+        }
+        return 0;
     }
 }

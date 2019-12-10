@@ -170,9 +170,9 @@ public class AddMemorialActivity extends AppCompatActivity implements View.OnCli
     }
     Calendar calendar = Calendar.getInstance(Locale.CHINA);
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-    private void showTime() {
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(AddMemorialActivity.this, new DatePickerDialog.OnDateSetListener() {
+    private void showTime() {//显示选日期对话框
+        DatePickerDialog datePickerDialog = new DatePickerDialog
+                (AddMemorialActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 calendar.set(Calendar.YEAR,year);
@@ -187,7 +187,7 @@ public class AddMemorialActivity extends AppCompatActivity implements View.OnCli
     }
 
     private static final int FLAG_PHOTO = 0;
-    private void getPhotosFromCamera() {
+    private void getPhotosFromCamera() {//从相册中获取图片
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
         intent.setType("image/*");
         intent.putExtra("noFaceDetection", true);

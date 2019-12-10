@@ -31,11 +31,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DrawerLayout drawer;
-    private RecyclerView mRecyclerView;
+    private DrawerLayout drawer;//抽屉布局
+    private RecyclerView mRecyclerView;//列表项
     private List<Memorial> list = new ArrayList<>();
-    private NoteListAdapter mAdapter;
-    private LinearLayout llBg;
+    private NoteListAdapter mAdapter;//适配器
+    private LinearLayout llBg;//更改颜色
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +66,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.nav_home:
+                    case R.id.nav_home://主页
                         drawer.closeDrawers();
                         break;
                     case R.id.nav_gallery:
 
                         break;
-                    case R.id.nav_slideshow:
+                    case R.id.nav_slideshow://修改颜色
                         showColor();
                         break;
                     case R.id.nav_tools:
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new NoteListAdapter(this, list);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(new NoteListAdapter.ItemClickListener() {
+        mAdapter.setOnItemClickListener(new NoteListAdapter.ItemClickListener() {//列表项点击事件
             @Override
             public void setOnItemClickListener(int position) {//点击列表项，跳转到详细界面
                 Intent intent = new Intent();
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {//返回键
         if (drawer == null) return;
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void init() {
+    private void init() {//初始化
         List<Memorial> data = MemorialDao.getInstance(this).loadNote();
         list.clear();
         list.addAll(data);

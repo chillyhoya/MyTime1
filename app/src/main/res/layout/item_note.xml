@@ -20,6 +20,14 @@
         android:scaleType="center"
         android:src="#4D000000"/>
     <TextView
+        android:id="@+id/tv_day"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:textColor="@color/white"
+        />
+    <TextView
         android:layout_marginTop="16dp"
         android:layout_marginLeft="76dp"
         android:id="@+id/mTvName"
@@ -30,9 +38,18 @@
         android:textColor="#333333"/>
 
     <TextView
+        android:layout_marginTop="37dp"
+        android:layout_marginLeft="76dp"
+        android:id="@+id/mTvDes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1111111111111111111111"
+        android:textSize="14sp"
+        android:textColor="#333333"/>
+    <TextView
         android:layout_below="@id/mTvName"
         android:id="@+id/mtvTime"
-        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="76dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
