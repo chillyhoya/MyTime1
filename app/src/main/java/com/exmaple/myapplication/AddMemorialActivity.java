@@ -182,7 +182,7 @@ public class AddMemorialActivity extends AppCompatActivity implements View.OnCli
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
-        tvTime.setText(format.format(calendar.getTime()));
+        tvTime.setText(format.format(calendar.getTime()));//在相应位置显示选好的日期
 
     }
 
@@ -192,19 +192,18 @@ public class AddMemorialActivity extends AppCompatActivity implements View.OnCli
         intent.setType("image/*");
         intent.putExtra("noFaceDetection", true);
         intent.putExtra("return-data", true);
-        startActivityForResult(intent, FLAG_PHOTO);
+        startActivityForResult(intent, FLAG_PHOTO);//跳转到相册
     }
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {//返回图片
         super.onActivityResult(requestCode, resultCode, data);
-
         switch (requestCode) {
             case FLAG_PHOTO:
                 if (data != null) {
                     Uri uri_ = data.getData();
                     if (uri_ != null) {
                         try {
-                            img = getPath(AddMemorialActivity.this,uri_);
+                            img = getPath(AddMemorialActivity.this,uri_);//获得路径
                             Bitmap photo = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri_));
                             ivImg.setImageBitmap(photo);
                         } catch (FileNotFoundException e) {
@@ -213,11 +212,9 @@ public class AddMemorialActivity extends AppCompatActivity implements View.OnCli
                     }
                 }
                 break;
-
             default:
                 break;
         }
-
     }
 
     public void onToast(String msg) {

@@ -35,7 +35,7 @@ public class MemorialDao {
         return userDB;
     }
 
-    public ContentValues getContentValues(Memorial order){
+    public ContentValues getContentValues(Memorial order){//写入数据
         ContentValues cv = new ContentValues();
         cv.put("title", order.getTitle());
         cv.put("content", order.getContent());
@@ -43,7 +43,6 @@ public class MemorialDao {
         cv.put("type", order.getType());
         cv.put("img", order.getImg());
         return cv;
-
     }
 
 

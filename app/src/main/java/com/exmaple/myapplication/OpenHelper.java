@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class OpenHelper extends SQLiteOpenHelper {
-
     public static final String CREATE_ARTICLE = "create table notes ("
             + "id integer primary key autoincrement, "
             + "title VARCHAR, "

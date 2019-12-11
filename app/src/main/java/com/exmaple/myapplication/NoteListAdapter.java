@@ -30,22 +30,24 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //为Item创建视图
         View view = LayoutInflater.from(context).inflate(R.layout.item_note, parent,false);
         return  new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        //将数据绑定到Item的视图上
         Memorial memorial = memorials.get(position);
-        holder.mTvName.setText(memorial.getTitle());
-        holder.mTvDes.setText(memorial.getContent());
-        if (!TextUtils.isEmpty(memorial.getImg())) {
+        holder.mTvName.setText(memorial.getTitle());//显示日期名称
+        holder.mTvDes.setText(memorial.getContent());//显示日期描述
+        if (!TextUtils.isEmpty(memorial.getImg())) {//显示图片
             Bitmap photo = BitmapFactory.decodeFile(memorial.getImg());
             holder.ivImg.setImageBitmap(photo);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {//点击列表项
                 if (listener!=null){
                     listener.setOnItemClickListener(position);
                 }
@@ -53,15 +55,15 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
         });
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onLongClick(View view) {
+            public boolean onLongClick(View view) {//长按列表项
                 if (listener!=null){
                     listener.setOnItemLongClickListener(position);
                 }
                 return false;
             }
         });
-        holder.mtvTime.setText(memorial.getTime());
-        holder.tv_day.setText(get(memorial.getTime())+"天");
+        holder.mtvTime.setText(memorial.getTime());//显示日期
+        holder.tv_day.setText(get(memorial.getTime())+"天");//显示倒计时
     }
 
     @Override
@@ -70,7 +72,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-
+      //View直接封装在ViewHolder
         TextView mTvName;
         TextView mTvDes;
         TextView mtvTime;
@@ -86,20 +88,22 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
         }
     }
     private ItemClickListener listener;
+    //set函数
     public void setOnItemClickListener(ItemClickListener listener ){
         this.listener = listener;
     }
+    //接口
     public interface ItemClickListener{
         void setOnItemClickListener(int position);
         void setOnItemLongClickListener(int position);
     }
-    private long get(String time){
+    private long get(String time){//倒计时
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date d1 = df.parse(time);
             Date d2 = new Date();
-            long diff = d1.getTime() - d2.getTime();
-            long days = diff / (1000 * 60 * 60 * 24);
+            long diff = d1.getTime() - d2.getTime();//时间差值，单位是毫秒
+            long days = diff / (1000 * 60 * 60 * 24);//转换成天
             return days;
         }
         catch (Exception e) {

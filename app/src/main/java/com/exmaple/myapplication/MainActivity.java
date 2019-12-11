@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_slideshow://修改颜色
                         showColor();
                         break;
-                    case R.id.nav_tools:
+                    case R.id.nav_tools://修改颜色
                         showColor();
                         break;
                     case R.id.nav_send:
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
     @Override
-    public void onBackPressed() {//返回键
+    public void onBackPressed() {//把抽屉菜单滑进去
         if (drawer == null) return;
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void init() {//初始化
-        List<Memorial> data = MemorialDao.getInstance(this).loadNote();
+        List<Memorial> data = MemorialDao.getInstance(this).loadNote();//从数据库加载数据
         list.clear();
         list.addAll(data);
         mAdapter.notifyDataSetChanged();
